@@ -60,6 +60,7 @@
             this.Name = "fMain";
             this.ShowIcon = false;
             this.Text = "CSTwosomeMessager";
+            this.Load += new System.EventHandler(this.fMain_Load);
             this.ResumeLayout(false);
 
         }

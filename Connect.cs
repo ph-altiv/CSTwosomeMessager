@@ -10,11 +10,26 @@ using System.Windows.Forms;
 
 namespace CSTwosomeMessager
 {
-    public partial class Connect : Form
+    public partial class fConnect : Form
     {
-        public Connect()
+        public fConnect()
         {
             InitializeComponent();
+        }
+
+        private void lHostName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fConnect_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fConnect_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

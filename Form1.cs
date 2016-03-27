@@ -21,5 +21,11 @@ namespace CSTwosomeMessager
         {
             MessageBox.Show("Hello, world!");
         }
+
+        private void fMain_Load(object sender, EventArgs e)
+        {
+            fConnect Connect = new fConnect();
+            Connect.ShowDialog();
+        }
     }
 }
