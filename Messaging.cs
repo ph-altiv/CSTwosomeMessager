@@ -17,12 +17,30 @@ namespace CSTwosomeMessager
         private static BinaryWriter bw;
         private static BinaryReader br;
         private static Queue<string> messageBuffer;
+        private static Thread tGettingMessages;
+        private static Object bufferLock;
+
+        private static void GettingMessages()
+        {
+            string msg;
+            while(true)
+            {
+                msg = br.ReadString();
+                lock(bufferLock)
+                {
+                    messageBuffer.Enqueue(msg);
+                }
+            }
+        }
+
         private static void CreateTcpListener(int port)
         {
             tl = new TcpListener(IPAddress.Any, port);
             tl.Start();
             tr = tl.AcceptTcpClient();
             br = new BinaryReader(tr.GetStream());
+            bufferLock = new Object();
+            tGettingMessages = new Thread(new ThreadStart(GettingMessages));
         }
 
         private static void CreateTcpClient(string hostname, int port)
@@ -44,6 +62,13 @@ namespace CSTwosomeMessager
             CreateTcpClient(serverhostname, serverport);
             bw.Write(clientport);
             CreateTcpListener(clientport);
+        }
+        public static string GetMsg()
+        {
+            while (messageBuffer.Count <= 0)
+                Thread.Sleep(100);
+            lock (bufferLock)
+            return messageBuffer.Dequeue();
         }
     }
 }
