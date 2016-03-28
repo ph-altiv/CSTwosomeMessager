@@ -71,5 +71,9 @@ namespace CSTwosomeMessager
             lock (bufferLock)
             return messageBuffer.Dequeue();
         }
+        public static void SendMsg(string str)
+        {
+            bw.Write(str);
+        }
     }
 }
