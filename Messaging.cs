@@ -16,7 +16,7 @@ namespace CSTwosomeMessager
         private static TcpListener tl;
         private static BinaryWriter bw;
         private static BinaryReader br;
-
+        private static Queue<string> messageBuffer;
         private static void CreateTcpListener(int port)
         {
             tl = new TcpListener(IPAddress.Any, port);
