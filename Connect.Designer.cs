@@ -33,12 +33,12 @@
             this.rbClient = new System.Windows.Forms.RadioButton();
             this.tlpSocketData = new System.Windows.Forms.TableLayoutPanel();
             this.lHostName = new System.Windows.Forms.Label();
-            this.lPort = new System.Windows.Forms.Label();
             this.tbHostName = new System.Windows.Forms.TextBox();
             this.tbPort = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tbPort2 = new System.Windows.Forms.TextBox();
+            this.lPort = new System.Windows.Forms.Label();
             this.lPort2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.flpServerClientSwitch.SuspendLayout();
             this.tlpSocketData.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.tlpSocketData.ColumnCount = 3;
             this.tlpSocketData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.11539F));
             this.tlpSocketData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.88461F));
-            this.tlpSocketData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tlpSocketData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tlpSocketData.Controls.Add(this.lHostName, 0, 0);
             this.tlpSocketData.Controls.Add(this.tbHostName, 0, 1);
             this.tlpSocketData.Controls.Add(this.tbPort, 1, 1);
@@ -104,6 +104,30 @@
             this.lHostName.TabIndex = 0;
             this.lHostName.Text = "Хост сервера";
             // 
+            // tbHostName
+            // 
+            this.tbHostName.Location = new System.Drawing.Point(3, 17);
+            this.tbHostName.Name = "tbHostName";
+            this.tbHostName.Size = new System.Drawing.Size(219, 20);
+            this.tbHostName.TabIndex = 2;
+            this.tbHostName.Text = "localhost";
+            // 
+            // tbPort
+            // 
+            this.tbPort.Location = new System.Drawing.Point(228, 17);
+            this.tbPort.Name = "tbPort";
+            this.tbPort.Size = new System.Drawing.Size(80, 20);
+            this.tbPort.TabIndex = 3;
+            this.tbPort.Text = "65111";
+            // 
+            // tbPort2
+            // 
+            this.tbPort2.Location = new System.Drawing.Point(314, 17);
+            this.tbPort2.Name = "tbPort2";
+            this.tbPort2.Size = new System.Drawing.Size(79, 20);
+            this.tbPort2.TabIndex = 4;
+            this.tbPort2.Text = "65112";
+            // 
             // lPort
             // 
             this.lPort.AutoSize = true;
@@ -113,19 +137,14 @@
             this.lPort.TabIndex = 1;
             this.lPort.Text = "Порт сервера";
             // 
-            // tbHostName
+            // lPort2
             // 
-            this.tbHostName.Location = new System.Drawing.Point(3, 17);
-            this.tbHostName.Name = "tbHostName";
-            this.tbHostName.Size = new System.Drawing.Size(219, 20);
-            this.tbHostName.TabIndex = 2;
-            // 
-            // tbPort
-            // 
-            this.tbPort.Location = new System.Drawing.Point(228, 17);
-            this.tbPort.Name = "tbPort";
-            this.tbPort.Size = new System.Drawing.Size(80, 20);
-            this.tbPort.TabIndex = 3;
+            this.lPort2.AutoSize = true;
+            this.lPort2.Location = new System.Drawing.Point(314, 0);
+            this.lPort2.Name = "lPort2";
+            this.lPort2.Size = new System.Drawing.Size(76, 13);
+            this.lPort2.TabIndex = 5;
+            this.lPort2.Text = "Порт клиента";
             // 
             // button1
             // 
@@ -135,22 +154,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Подключиться";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // tbPort2
-            // 
-            this.tbPort2.Location = new System.Drawing.Point(315, 17);
-            this.tbPort2.Name = "tbPort2";
-            this.tbPort2.Size = new System.Drawing.Size(79, 20);
-            this.tbPort2.TabIndex = 4;
-            // 
-            // lPort2
-            // 
-            this.lPort2.AutoSize = true;
-            this.lPort2.Location = new System.Drawing.Point(315, 0);
-            this.lPort2.Name = "lPort2";
-            this.lPort2.Size = new System.Drawing.Size(76, 13);
-            this.lPort2.TabIndex = 5;
-            this.lPort2.Text = "Порт клиента";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // fConnect
             // 

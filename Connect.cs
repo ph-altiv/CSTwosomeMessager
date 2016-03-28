@@ -31,5 +31,26 @@ namespace CSTwosomeMessager
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rbServer.Checked)
+                {
+                    Messaging.CreateServer(Convert.ToInt32(tbPort.Text));
+                    return;
+                }
+                else if (rbClient.Checked)
+                {
+                    Messaging.CreateClient(tbHostName.Text, Convert.ToInt32(tbPort.Text), Convert.ToInt32(tbPort2.Text));
+                }
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                Application.Exit();
+            }
+        }
     }
 }
