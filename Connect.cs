@@ -12,6 +12,7 @@ namespace CSTwosomeMessager
 {
     public partial class fConnect : Form
     {
+        private bool connected = false;
         public fConnect()
         {
             InitializeComponent();
@@ -29,7 +30,8 @@ namespace CSTwosomeMessager
 
         private void fConnect_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if(!connected)
+                Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,18 +41,18 @@ namespace CSTwosomeMessager
                 if (rbServer.Checked)
                 {
                     Messaging.CreateServer(Convert.ToInt32(tbPort.Text));
-                    return;
                 }
                 else if (rbClient.Checked)
                 {
                     Messaging.CreateClient(tbHostName.Text, Convert.ToInt32(tbPort.Text), Convert.ToInt32(tbPort2.Text));
                 }
+                connected = true;
             }
             catch(Exception exception)
             {
                 MessageBox.Show(exception.Message);
-                Application.Exit();
             }
+            this.Close();
         }
     }
 }
