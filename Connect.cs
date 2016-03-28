@@ -46,6 +46,11 @@ namespace CSTwosomeMessager
                 {
                     Messaging.CreateClient(tbHostName.Text, Convert.ToInt32(tbPort.Text), Convert.ToInt32(tbPort2.Text));
                 }
+                else
+                {
+                    MessageBox.Show("Choose 'server' or 'client'");
+                    return;
+                }
                 connected = true;
             }
             catch(Exception exception)
