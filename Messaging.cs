@@ -39,6 +39,7 @@ namespace CSTwosomeMessager
             tl.Start();
             tr = tl.AcceptTcpClient();
             br = new BinaryReader(tr.GetStream());
+            messageBuffer = new Queue<string>();
             bufferLock = new Object();
             tGettingMessages = new Thread(new ThreadStart(GettingMessages));
         }
