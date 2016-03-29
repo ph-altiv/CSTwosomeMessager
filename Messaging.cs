@@ -92,6 +92,9 @@ namespace CSTwosomeMessager
             if (tGettingMessages == null) return;
             tGettingMessages.Abort();
             tGettingMessages.Join();
+            ts.Close();
+            tr.Close();
+            tl.Stop();
         }
 
         public static bool isConnected()
