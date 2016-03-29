@@ -39,6 +39,7 @@ namespace CSTwosomeMessager
             fConnect Connect = new fConnect();
             Connect.ShowDialog();
             lbBlock = new Object();
+            tGettingMessages = new Thread(new ThreadStart(GettingMessages));
         }
 
         private void bSend_Click(object sender, EventArgs e)
