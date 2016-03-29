@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbMessages = new System.Windows.Forms.ListBox();
             this.tbInputMessage = new System.Windows.Forms.TextBox();
             this.bSend = new System.Windows.Forms.Button();
+            this.tGettingMessages = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lbMessages
@@ -59,6 +61,10 @@
             this.bSend.UseVisualStyleBackColor = true;
             this.bSend.Click += new System.EventHandler(this.bSend_Click);
             // 
+            // tGettingMessages
+            // 
+            this.tGettingMessages.Tick += new System.EventHandler(this.tGettingMessages_Tick);
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -70,6 +76,7 @@
             this.Name = "fMain";
             this.ShowIcon = false;
             this.Text = "CSTwosomeMessager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fMain_FormClosing);
             this.Load += new System.EventHandler(this.fMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -80,6 +87,7 @@
         private System.Windows.Forms.ListBox lbMessages;
         private System.Windows.Forms.TextBox tbInputMessage;
         private System.Windows.Forms.Button bSend;
+        private System.Windows.Forms.Timer tGettingMessages;
     }
 }
 

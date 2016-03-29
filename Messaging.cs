@@ -22,10 +22,18 @@ namespace CSTwosomeMessager
 
         private static void GettingMessages()
         {
-            string msg;
+            string msg = "";
             while(true)
             {
-                msg = br.ReadString();
+                try
+                {
+                    msg = br.ReadString();
+                }
+                catch(Exception)
+                {
+                    Thread.Sleep(100);
+                    continue;
+                }
                 lock(bufferLock)
                 {
                     messageBuffer.Enqueue(msg);
@@ -39,9 +47,11 @@ namespace CSTwosomeMessager
             tl.Start();
             tr = tl.AcceptTcpClient();
             br = new BinaryReader(tr.GetStream());
+            br.BaseStream.ReadTimeout = 100;
             messageBuffer = new Queue<string>();
             bufferLock = new Object();
             tGettingMessages = new Thread(new ThreadStart(GettingMessages));
+            tGettingMessages.Start();
         }
 
         private static void CreateTcpClient(string hostname, int port)
@@ -66,14 +76,20 @@ namespace CSTwosomeMessager
         }
         public static string GetMsg()
         {
-            while (messageBuffer.Count <= 0)
-                Thread.Sleep(100);
+            if (messageBuffer.Count <= 0)
+                return null;
             lock (bufferLock)
             return messageBuffer.Dequeue();
         }
         public static void SendMsg(string str)
         {
             bw.Write(str);
+        }
+
+        public static void StopGettingMessages()
+        {
+            tGettingMessages.Abort();
+            tGettingMessages.Join();
         }
     }
 }

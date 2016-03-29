@@ -13,21 +13,7 @@ namespace CSTwosomeMessager
 {
     public partial class fMain : Form
     {
-        private Thread tGettingMessages;
         private Object lbBlock;
-
-        private void GettingMessages()
-        {
-            string msg;
-            while(true)
-            {
-                msg = Messaging.GetMsg();
-                lock(lbBlock)
-                {
-                    lbMessages.Items.Add(msg);
-                }
-            }
-        }
 
         public fMain()
         {
@@ -39,7 +25,7 @@ namespace CSTwosomeMessager
             fConnect Connect = new fConnect();
             Connect.ShowDialog();
             lbBlock = new Object();
-            tGettingMessages = new Thread(new ThreadStart(GettingMessages));
+            tGettingMessages.Enabled = true;
         }
 
         private void bSend_Click(object sender, EventArgs e)
@@ -53,6 +39,22 @@ namespace CSTwosomeMessager
             {
                 lbMessages.Items.Add(msg);
             }
+        }
+
+        private void tGettingMessages_Tick(object sender, EventArgs e)
+        {
+            string msg = Messaging.GetMsg();
+            if (msg == null) return;
+            lock (lbBlock)
+            {
+                lbMessages.Items.Add(msg);
+            }
+        }
+
+        private void fMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Messaging.StopGettingMessages();
+            tGettingMessages.Stop();
         }
     }
 }
