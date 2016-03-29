@@ -17,11 +17,6 @@ namespace CSTwosomeMessager
             InitializeComponent();
         }
 
-        private void bHelloWorld_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hello, world!");
-        }
-
         private void fMain_Load(object sender, EventArgs e)
         {
             fConnect Connect = new fConnect();

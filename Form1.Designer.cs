@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bHelloWorld = new System.Windows.Forms.Button();
             this.lbMessages = new System.Windows.Forms.ListBox();
+            this.tbInputMessage = new System.Windows.Forms.TextBox();
+            this.bSend = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // bHelloWorld
-            // 
-            this.bHelloWorld.Location = new System.Drawing.Point(431, 210);
-            this.bHelloWorld.Name = "bHelloWorld";
-            this.bHelloWorld.Size = new System.Drawing.Size(147, 39);
-            this.bHelloWorld.TabIndex = 0;
-            this.bHelloWorld.Text = "Hello, world!";
-            this.bHelloWorld.UseVisualStyleBackColor = true;
-            this.bHelloWorld.Click += new System.EventHandler(this.bHelloWorld_Click);
             // 
             // lbMessages
             // 
@@ -50,25 +41,44 @@
             this.lbMessages.Size = new System.Drawing.Size(566, 186);
             this.lbMessages.TabIndex = 1;
             // 
+            // tbInputMessage
+            // 
+            this.tbInputMessage.Location = new System.Drawing.Point(12, 204);
+            this.tbInputMessage.Multiline = true;
+            this.tbInputMessage.Name = "tbInputMessage";
+            this.tbInputMessage.Size = new System.Drawing.Size(413, 37);
+            this.tbInputMessage.TabIndex = 2;
+            // 
+            // bSend
+            // 
+            this.bSend.Location = new System.Drawing.Point(431, 204);
+            this.bSend.Name = "bSend";
+            this.bSend.Size = new System.Drawing.Size(147, 37);
+            this.bSend.TabIndex = 3;
+            this.bSend.Text = "Отправить";
+            this.bSend.UseVisualStyleBackColor = true;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 261);
+            this.ClientSize = new System.Drawing.Size(590, 253);
+            this.Controls.Add(this.bSend);
+            this.Controls.Add(this.tbInputMessage);
             this.Controls.Add(this.lbMessages);
-            this.Controls.Add(this.bHelloWorld);
             this.Name = "fMain";
             this.ShowIcon = false;
             this.Text = "CSTwosomeMessager";
             this.Load += new System.EventHandler(this.fMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button bHelloWorld;
         private System.Windows.Forms.ListBox lbMessages;
+        private System.Windows.Forms.TextBox tbInputMessage;
+        private System.Windows.Forms.Button bSend;
     }
 }
 
