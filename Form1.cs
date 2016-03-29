@@ -22,5 +22,14 @@ namespace CSTwosomeMessager
             fConnect Connect = new fConnect();
             Connect.ShowDialog();
         }
+
+        private void bSend_Click(object sender, EventArgs e)
+        {
+            string msg = tbInputMessage.Text.Trim();
+            tbInputMessage.Text = "";
+            if (msg.Length <= 0)
+                return;
+            Messaging.SendMsg(msg);
+        }
     }
 }
