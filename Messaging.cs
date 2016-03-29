@@ -96,20 +96,10 @@ namespace CSTwosomeMessager
 
         public static bool isConnected()
         {
-            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
-            TcpConnectionInformation[] tcpConnections = ipProperties.GetActiveTcpConnections();
-            foreach (TcpConnectionInformation c in tcpConnections)
-            {
-                TcpState stateOfConnection = c.State;
-                if (c.LocalEndPoint.Equals(tr.Client.LocalEndPoint) && c.RemoteEndPoint.Equals(tr.Client.RemoteEndPoint))
-                {
-                    if (stateOfConnection == TcpState.Established)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
+            TcpConnectionInformation stateTr = IPGlobalProperties.GetIPGlobalProperties()
+                .GetActiveTcpConnections()
+                .SingleOrDefault(x => x.LocalEndPoint.Equals(tr.Client.LocalEndPoint));
+            return (stateTr != null) ? stateTr.State == TcpState.Established : false;
         }
     }
 }
