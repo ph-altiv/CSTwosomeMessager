@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.NetworkInformation;
 
 namespace CSTwosomeMessager
 {
@@ -90,6 +91,24 @@ namespace CSTwosomeMessager
         {
             tGettingMessages.Abort();
             tGettingMessages.Join();
+        }
+
+        public static bool isConnected()
+        {
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] tcpConnections = ipProperties.GetActiveTcpConnections();
+            foreach (TcpConnectionInformation c in tcpConnections)
+            {
+                TcpState stateOfConnection = c.State;
+                if (c.LocalEndPoint.Equals(tr.Client.LocalEndPoint) && c.RemoteEndPoint.Equals(tr.Client.RemoteEndPoint))
+                {
+                    if (stateOfConnection == TcpState.Established)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

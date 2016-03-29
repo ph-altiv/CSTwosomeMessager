@@ -43,6 +43,12 @@ namespace CSTwosomeMessager
 
         private void tGettingMessages_Tick(object sender, EventArgs e)
         {
+            if(!Messaging.isConnected())
+            {
+                tGettingMessages.Enabled = false;
+                MessageBox.Show("Disconnect");
+                Application.Exit();
+            }
             string msg = Messaging.GetMsg();
             if (msg == null) return;
             lock (lbBlock)
