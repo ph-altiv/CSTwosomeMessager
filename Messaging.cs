@@ -89,6 +89,7 @@ namespace CSTwosomeMessager
 
         public static void StopGettingMessages()
         {
+            if (tGettingMessages == null) return;
             tGettingMessages.Abort();
             tGettingMessages.Join();
         }
